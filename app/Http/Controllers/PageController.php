@@ -9,9 +9,12 @@ use App\Services\Page\PageService;
 use App\Repositories\Page\PageRepository;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 
 class PageController extends Controller
 {
+     use AuthorizesRequests;
+
     public function __construct(
         private PageService $pageService,
         private PageRepository $pageRepository
@@ -47,7 +50,7 @@ class PageController extends Controller
             ->with(['client.themes'])
             ->findOrFail($id);
 
-        $this->authorize('view', $page);
+        // $this->authorize('view', $page);
 
         return (new PageResource($page))->response();
     }

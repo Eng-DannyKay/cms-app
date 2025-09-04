@@ -35,7 +35,7 @@ const PageCard = ({ page, onUpdate, onDelete }) => {
 
     return (
         <div className="card group hover:shadow-xl transition-all duration-300">
-            <div className="p-6">
+            <div className="p-8">
                 {/* Header */}
                 <div className="flex items-start justify-between mb-4">
                     <div className="flex-1 min-w-0">

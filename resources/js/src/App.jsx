@@ -8,6 +8,7 @@ import LoadingSpinner from '@/components/UI/LoadingSpinner';
 import Dashboard from '@/client/pages/dashboard/Dashboard';
 import Pages from '@/client/pages/dashboard/Pages';
 import PageEditor from '@/client/pages/dashboard/PageEditor';
+import Analytics from '@/client/pages/dashboard/PageEditor';
 
 
 function AppContent() {
@@ -60,6 +61,14 @@ function AppContent() {
                 element={
                     <ProtectedRoute>
                         <PageEditor />
+                    </ProtectedRoute>
+                } 
+            />
+              <Route 
+                path="/dashboard/pages/edit/:id" 
+                element={
+                    <ProtectedRoute>
+                        <Analytics />
                     </ProtectedRoute>
                 } 
             />
