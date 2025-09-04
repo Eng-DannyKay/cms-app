@@ -12,6 +12,9 @@ class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
 
+    const ROLE_ADMIN = 'admin';
+    const ROLE_CLIENT = 'client';
+
     protected $fillable = [
         'name',
         'email',
@@ -36,11 +39,11 @@ class User extends Authenticatable
 
     public function isAdmin(): bool
     {
-        return $this->role === 'admin';
+        return $this->role === self::ROLE_ADMIN;
     }
 
     public function isClient(): bool
     {
-        return $this->role === 'client';
+        return $this->role === self::ROLE_CLIENT;
     }
 }

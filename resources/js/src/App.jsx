@@ -5,6 +5,9 @@ import ProtectedRoute from '@/components/ProtectedRoute';
 import Login from '@/client/pages/auth/Login';
 import Register from '@/client/pages/auth/Register';
 import LoadingSpinner from '@/components/UI/LoadingSpinner';
+import Dashboard from '@/client/pages/dashboard/Dashboard';
+import Pages from '@/client/pages/dashboard/Pages';
+import PageEditor from '@/client/pages/dashboard/PageEditor';
 
 
 function AppContent() {
@@ -40,12 +43,25 @@ function AppContent() {
                 path="/dashboard"
                 element={
                     <ProtectedRoute>
-                        <div className="p-8">
-                            <h1 className="text-2xl font-bold">Dashboard</h1>
-                            <p>Welcome to your dashboard!</p>
-                        </div>
+                        <Dashboard />
                     </ProtectedRoute>
                 }
+            />
+            <Route 
+                path="/dashboard/pages" 
+                element={
+                    <ProtectedRoute>
+                        <Pages />
+                    </ProtectedRoute>
+                } 
+            />
+            <Route 
+                path="/dashboard/pages/edit/:id" 
+                element={
+                    <ProtectedRoute>
+                        <PageEditor />
+                    </ProtectedRoute>
+                } 
             />
             <Route
                 path="/"
@@ -63,7 +79,6 @@ function AppContent() {
     );
 }
 
-// Main App component
 function App() {
     return (
         <AuthProvider>

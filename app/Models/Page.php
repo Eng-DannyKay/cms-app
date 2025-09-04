@@ -36,6 +36,20 @@ class Page extends Model
         return $this->hasMany(PageView::class);
     }
 
+    public function viewsCount(): Attribute
+{
+    return Attribute::make(
+        get: fn () => $this->views()->count()
+    );
+}
+
+public function uniqueVisitorsCount(): Attribute
+{
+    return Attribute::make(
+        get: fn () => $this->views()->distinct('visitor_id')->count('visitor_id')
+    );
+}
+
     public function versions(): HasMany
     {
         return $this->hasMany(ContentVersion::class);

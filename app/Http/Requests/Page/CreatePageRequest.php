@@ -12,17 +12,26 @@ class CreatePageRequest extends FormRequest
         return auth()->check() && auth()->user()->isClient();
     }
 
-    public function rules(): array
-    {
-        return [
-            'title' => 'required|string|max:255',
-            'slug' => 'nullable|string|max:255|alpha_dash|unique:pages,slug,NULL,id,client_id,' . auth()->user()->client->id,
-            'content' => 'required|array',
-            'content.sections' => 'required|array|min:1',
-            'content.sections.*.type' => 'required|string|in:hero,services,about,contact,features,testimonials',
-            'is_published' => 'boolean'
-        ];
-    }
+ 
+
+public function rules(): array
+{
+    return [
+        'title' => 'required|string|max:255',
+        'slug' => [
+            'required',
+            'string',
+            'max:255',
+            'alpha_dash',
+            Rule::unique('pages')->where(function ($query) {
+                return $query->where('client_id', auth()->user()->client->id);
+            })
+        ],
+        'is_published' => 'boolean',
+        'content' => 'sometimes|array',
+        'content.sections' => 'sometimes|array',
+    ];
+}
 
     public function prepareForValidation()
     {

@@ -39,7 +39,7 @@ const Button = ({
             disabled={disabled || loading}
             {...props}
         >
-            {loading && <LoadingSpinner className="mr-2" />}
+            {loading && <LoadingSpinner className="mr-2 w-8 h-8" />}
             {children}
         </button>
     );
