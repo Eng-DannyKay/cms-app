@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import MainLayout from '@/client/components/dashboard/MainLayout';
+import MainLayout from '../dashboard/components/MainLayout';
 import MetricsCard from '../analytics/components/MetricsCard';
 import VisitorChart from '@/client/components/analytics/VisitorChart';
 import GeographyChart from '@/client/components/analytics/GeographyChart';
 import DeviceChart from '@/client/components/analytics/DeviceChart';
-import { analyticsApi } from '@/services/analyticsApi';
-import Button from '@/components/UI/Button';
-import LoadingSpinner from '@/components/UI/LoadingSpinner';
+import { analyticsApi } from '../../../services/analyticsApi';
+import Button from '../../../Components/UI/Button';
+import LoadingSpinner from '../../../Components/UI/LoadingSpinner';
 
 const Analytics = () => {
     const [loading, setLoading] = useState(true);
@@ -23,12 +23,12 @@ const Analytics = () => {
         try {
             setLoading(true);
             setError(null);
-            
+
             const [summaryResponse] = await Promise.all([
                 analyticsApi.getClientAnalytics(period),
 
             ]);
-            
+
             setSummary(summaryResponse.data);
             // Set chart data
         } catch (err) {

@@ -1,14 +1,14 @@
+import { Star, FileText, Grid, MessageSquare, Phone, Image, ArrowUp, ArrowDown, X } from 'lucide-react';
 import React from 'react';
-import Button from '../../../Components/UI/Button';
 
 const SectionManager = ({ sections, onAddSection, onRemoveSection, onReorderSection }) => {
     const sectionTypes = [
-        { type: 'hero', label: 'Hero Section', icon: '⭐', description: 'Full-width banner with call-to-action' },
-        { type: 'content', label: 'Content Block', icon: '📝', description: 'Rich text content with images' },
-        { type: 'features', label: 'Features Grid', icon: '🔧', description: 'Grid of features or services' },
-        { type: 'testimonials', label: 'Testimonials', icon: '💬', description: 'Customer testimonials carousel' },
-        { type: 'contact', label: 'Contact Form', icon: '📞', description: 'Contact information and form' },
-        { type: 'gallery', label: 'Image Gallery', icon: '🖼️', description: 'Grid of images or portfolio' },
+        { type: 'hero', label: 'Hero Section', icon: <Star className="w-5 h-5" />, description: 'Full-width banner with call-to-action' },
+        { type: 'content', label: 'Content Block', icon: <FileText className="w-5 h-5" />, description: 'Rich text content with images' },
+        { type: 'features', label: 'Features Grid', icon: <Grid className="w-5 h-5" />, description: 'Grid of features or services' },
+        { type: 'testimonials', label: 'Testimonials', icon: <MessageSquare className="w-5 h-5" />, description: 'Customer testimonials carousel' },
+        { type: 'contact', label: 'Contact Form', icon: <Phone className="w-5 h-5" />, description: 'Contact information and form' },
+        { type: 'gallery', label: 'Image Gallery', icon: <Image className="w-5 h-5" />, description: 'Grid of images or portfolio' },
     ];
 
     return (
