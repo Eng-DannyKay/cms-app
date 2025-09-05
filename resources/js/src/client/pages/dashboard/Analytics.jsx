@@ -1,18 +1,18 @@
-import React, { useState, useEffect } from 'react';
-import MainLayout from '../dashboard/components/MainLayout';
-import MetricsCard from '../analytics/components/MetricsCard';
-import VisitorChart from '../analytics/components/VisitorChart';
-import GeographyChart from '../analytics/components/GeographyChart';
-import DeviceChart from '../analytics/components/DeviceChart';
-import { analyticsApi } from '../../../services/analyticsApi';
-import Button from '../../../Components/UI/Button';
-import LoadingSpinner from '../../../Components/UI/LoadingSpinner';
-import { Users, User, TrendingDown, Clock, Download } from 'lucide-react';
+import React, { useState, useEffect } from "react";
+import MainLayout from "../dashboard/components/MainLayout";
+import MetricsCard from "../analytics/components/MetricsCard";
+import VisitorChart from "../analytics/components/VisitorChart";
+import GeographyChart from "../analytics/components/GeographyChart";
+import DeviceChart from "../analytics/components/DeviceChart";
+import { analyticsApi } from "../../../services/analyticsApi";
+import Button from "../../../Components/UI/Button";
+import LoadingSpinner from "../../../Components/UI/LoadingSpinner";
+import { Users, User, TrendingDown, Clock, Download } from "lucide-react";
 
 const Analytics = () => {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
-    const [period, setPeriod] = useState('30d');
+    const [period, setPeriod] = useState("30d");
     const [summary, setSummary] = useState(null);
     const [charts, setCharts] = useState({});
 
@@ -27,13 +27,12 @@ const Analytics = () => {
 
             const [summaryResponse] = await Promise.all([
                 analyticsApi.getClientAnalytics(period),
-
             ]);
 
             setSummary(summaryResponse.data);
         } catch (err) {
             setError(err.message);
-            console.error('Failed to load analytics:', err);
+            console.error("Failed to load analytics:", err);
         } finally {
             setLoading(false);
         }
@@ -106,7 +105,12 @@ const Analytics = () => {
                         value={`${summary?.bounce_rate || 0}%`}
                         change={-4.2}
                         changeType="decrease"
-                        icon={<TrendingDown size={20} className="text-amber-600" />}
+                        icon={
+                            <TrendingDown
+                                size={20}
+                                className="text-amber-600"
+                            />
+                        }
                     />
                     <MetricsCard
                         title="Avg. Session"

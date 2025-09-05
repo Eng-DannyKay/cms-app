@@ -1,15 +1,20 @@
-import React, { Suspense, lazy } from 'react';
-import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
-import { AuthProvider, useAuth } from '@/contexts/AuthContext';
-import ProtectedRoute from '@/components/ProtectedRoute';
-import LoadingSpinner from '@/components/UI/LoadingSpinner';
+import React, { Suspense, lazy } from "react";
+import {
+    BrowserRouter as Router,
+    Routes,
+    Route,
+    Navigate,
+} from "react-router-dom";
+import { AuthProvider, useAuth } from "@/contexts/AuthContext";
+import ProtectedRoute from "@/components/ProtectedRoute";
+import LoadingSpinner from "@/components/UI/LoadingSpinner";
 
-const Login = lazy(() => import('@/client/pages/auth/Login'));
-const Register = lazy(() => import('@/client/pages/auth/Register'));
-const Dashboard = lazy(() => import('@/client/pages/dashboard/Dashboard'));
-const Pages = lazy(() => import('@/client/pages/dashboard/Pages'));
-const PageEditor = lazy(() => import('@/client/pages/dashboard/PageEditor'));
-const Analytics = lazy(() => import('@/client/pages/dashboard/Analytics')); // ✅ fixed import
+const Login = lazy(() => import("@/client/pages/auth/Login"));
+const Register = lazy(() => import("@/client/pages/auth/Register"));
+const Dashboard = lazy(() => import("@/client/pages/dashboard/Dashboard"));
+const Pages = lazy(() => import("@/client/pages/dashboard/Pages"));
+const PageEditor = lazy(() => import("@/client/pages/dashboard/PageEditor"));
+const Analytics = lazy(() => import("@/client/pages/dashboard/Analytics")); // ✅ fixed import
 
 function AppContent() {
     const { user, loading } = useAuth();
@@ -23,11 +28,13 @@ function AppContent() {
     }
 
     return (
-        <Suspense fallback={
-            <div className="min-h-screen flex items-center justify-center">
-                <LoadingSpinner className="w-8 h-8" />
-            </div>
-        }>
+        <Suspense
+            fallback={
+                <div className="min-h-screen flex items-center justify-center">
+                    <LoadingSpinner className="w-8 h-8" />
+                </div>
+            }
+        >
             <Routes>
                 <Route
                     path="/login"
@@ -80,13 +87,13 @@ function AppContent() {
                 <Route
                     path="/"
                     element={
-                        <Navigate to={user ? '/dashboard' : '/login'} replace />
+                        <Navigate to={user ? "/dashboard" : "/login"} replace />
                     }
                 />
                 <Route
                     path="*"
                     element={
-                        <Navigate to={user ? '/dashboard' : '/login'} replace />
+                        <Navigate to={user ? "/dashboard" : "/login"} replace />
                     }
                 />
             </Routes>
