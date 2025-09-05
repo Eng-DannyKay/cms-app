@@ -14,7 +14,7 @@ const Register = lazy(() => import("@/client/pages/auth/Register"));
 const Dashboard = lazy(() => import("@/client/pages/dashboard/Dashboard"));
 const Pages = lazy(() => import("@/client/pages/dashboard/Pages"));
 const PageEditor = lazy(() => import("@/client/pages/dashboard/PageEditor"));
-const Analytics = lazy(() => import("@/client/pages/dashboard/Analytics")); // ✅ fixed import
+const Analytics = lazy(() => import("@/client/pages/dashboard/Analytics")); 
 
 function AppContent() {
     const { user, loading } = useAuth();
