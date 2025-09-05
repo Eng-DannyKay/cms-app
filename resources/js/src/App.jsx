@@ -6,8 +6,8 @@ import {
     Navigate,
 } from "react-router-dom";
 import { AuthProvider, useAuth } from "@/contexts/AuthContext";
-import ProtectedRoute from "@/components/ProtectedRoute";
-import LoadingSpinner from "@/components/UI/LoadingSpinner";
+import ProtectedRoute from "@/Components/ProtectedRoute"; 
+import LoadingSpinner from "@/Components/UI/LoadingSpinner";
 
 const Login = lazy(() => import("@/client/pages/auth/Login"));
 const Register = lazy(() => import("@/client/pages/auth/Register"));
