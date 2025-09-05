@@ -5,7 +5,7 @@ import "../css/app.css";
 
 const rootElement = document.getElementById("root");
 if (rootElement) {
-    createRoot(rootElement).render(  using rootElement instead of appElement
+    createRoot(rootElement).render( 
         <React.StrictMode>
             <App />
         </React.StrictMode>
