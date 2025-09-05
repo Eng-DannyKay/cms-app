@@ -1,7 +1,7 @@
-import React, { useRef, useState } from 'react';
-import { pageApi } from '@/services/pageApi';
 import Button from '@/components/UI/Button';
 import LoadingSpinner from '@/components/UI/LoadingSpinner';
+import { pageApi } from '@/services/pageApi';
+import { useRef, useState } from 'react';
 
 const ImageUpload = ({ onImageUpload }) => {
     const [uploading, setUploading] = useState(false);
@@ -26,7 +26,7 @@ const ImageUpload = ({ onImageUpload }) => {
     const handleDrop = (e) => {
         e.preventDefault();
         setDragOver(false);
-        
+
         const files = Array.from(e.dataTransfer.files);
         if (files.length > 0) {
             handleFileUpload(files[0]);
@@ -53,8 +53,8 @@ const ImageUpload = ({ onImageUpload }) => {
     return (
         <div
             className={`border-2 border-dashed rounded-lg p-6 text-center transition-colors ${
-                dragOver 
-                    ? 'border-primary bg-primary/10' 
+                dragOver
+                    ? 'border-primary bg-primary/10'
                     : 'border-gray-300 dark:border-gray-600 hover:border-gray-400 dark:hover:border-gray-500'
             }`}
             onDrop={handleDrop}
@@ -68,7 +68,7 @@ const ImageUpload = ({ onImageUpload }) => {
                 onChange={handleFileSelect}
                 className="hidden"
             />
-            
+
             {uploading ? (
                 <div className="flex flex-col items-center">
                     <LoadingSpinner className="w-8 h-8 mb-2" />

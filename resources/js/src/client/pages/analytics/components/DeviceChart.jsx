@@ -1,6 +1,5 @@
-import React from 'react';
-import { BarChart, Bar, XAxis, YAxis, ResponsiveContainer, Tooltip, CartesianGrid } from 'recharts';
-import { Smartphone, Laptop, Monitor, TabletSmartphone, HelpCircle } from 'lucide-react';
+import { HelpCircle, Laptop, Monitor, Smartphone, TabletSmartphone } from 'lucide-react';
+import { Bar, BarChart, CartesianGrid, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts';
 
 const DeviceChart = ({ data = [] }) => {
   if (!data.length) {

@@ -1,7 +1,6 @@
-import React from 'react';
+import { useAuth } from '@/contexts/AuthContext';
 import { Link, useLocation } from 'react-router-dom';
 import { navigation } from '../../../../shared/config/navigation';
-import { useAuth } from '@/contexts/AuthContext';
 
 const Sidebar = ({ isOpen, onClose }) => {
   const location = useLocation();
@@ -9,7 +8,7 @@ const Sidebar = ({ isOpen, onClose }) => {
 
   return (
     <>
-     
+
       {isOpen && (
         <div
           className="fixed inset-0 bg-gray-900/80 lg:hidden"
@@ -19,7 +18,7 @@ const Sidebar = ({ isOpen, onClose }) => {
 
       <aside
         className={`
-          fixed inset-y-0 left-0 z-50 w-64 bg-white dark:bg-gray-900 border-r border-gray-200 dark:border-gray-800 
+          fixed inset-y-0 left-0 z-50 w-64 bg-white dark:bg-gray-900 border-r border-gray-200 dark:border-gray-800
           transform transition-transform duration-300 ease-in-out lg:translate-x-0 lg:static lg:inset-0
           ${isOpen ? 'translate-x-0' : '-translate-x-full'}
         `}

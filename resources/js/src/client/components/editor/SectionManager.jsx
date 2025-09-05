@@ -1,5 +1,4 @@
-import { Star, FileText, Grid, MessageSquare, Phone, Image, ArrowUp, ArrowDown, X } from 'lucide-react';
-import React from 'react';
+import { FileText, Grid, Image, MessageSquare, Phone, Star } from 'lucide-react';
 
 const SectionManager = ({ sections, onAddSection, onRemoveSection, onReorderSection }) => {
     const sectionTypes = [

@@ -1,4 +1,3 @@
-import React from 'react';
 
 const PreviewModal = ({ isOpen, onClose, content, title }) => {
     if (!isOpen) return null;
@@ -29,9 +28,9 @@ const PreviewModal = ({ isOpen, onClose, content, title }) => {
                                     <p>{section.content}</p>
                                 )}
                                 {section.type === 'image' && (
-                                    <img 
-                                        src={section.content} 
-                                        alt="" 
+                                    <img
+                                        src={section.content}
+                                        alt=""
                                         className="rounded-lg max-w-full h-auto"
                                     />
                                 )}

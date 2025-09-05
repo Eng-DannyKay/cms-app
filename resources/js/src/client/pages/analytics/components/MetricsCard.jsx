@@ -1,5 +1,4 @@
-import React from 'react';
-import { ArrowUp, ArrowDown } from 'lucide-react';
+import { ArrowDown, ArrowUp } from 'lucide-react';
 
 const MetricsCard = ({ title, value, change, changeType, icon, loading = false }) => {
     const isPositive = changeType === 'increase';

@@ -1,8 +1,7 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import { pageApi } from '@/services/pageApi';
 import Button from '@/components/UI/Button';
-import LoadingSpinner from '@/components/UI/LoadingSpinner';
+import { pageApi } from '@/services/pageApi';
+import { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 const PageCard = ({ page, onUpdate, onDelete }) => {
     const [loading, setLoading] = useState(false);
@@ -11,7 +10,7 @@ const PageCard = ({ page, onUpdate, onDelete }) => {
     const handleAction = async (actionType, actionFn) => {
         setLoading(true);
         setAction(actionType);
-        
+
         try {
             const result = await actionFn();
             if (onUpdate) onUpdate(result);
@@ -24,19 +23,19 @@ const PageCard = ({ page, onUpdate, onDelete }) => {
         }
     };
 
-    const handlePublish = () => 
+    const handlePublish = () =>
         handleAction('publishing', () => pageApi.publishPage(page.id));
 
-    const handleDuplicate = () => 
+    const handleDuplicate = () =>
         handleAction('duplicating', () => pageApi.duplicatePage(page.id));
 
-    const handleDelete = () => 
+    const handleDelete = () =>
         handleAction('deleting', () => pageApi.deletePage(page.id).then(() => page));
 
     return (
         <div className="card group hover:shadow-xl transition-all duration-300">
             <div className="p-8">
-                {/* Header */}
+
                 <div className="flex items-start justify-between mb-4">
                     <div className="flex-1 min-w-0">
                         <h3 className="text-lg font-semibold text-gray-900 dark:text-white truncate">
@@ -46,25 +45,25 @@ const PageCard = ({ page, onUpdate, onDelete }) => {
                             /{page.slug}
                         </p>
                     </div>
-                    
-                    {/* Status badge */}
+
+
                     <span className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${
-                        page.is_published 
-                            ? 'bg-green-100 text-green-800 dark:bg-green-900/20 dark:text-green-400' 
+                        page.is_published
+                            ? 'bg-green-100 text-green-800 dark:bg-green-900/20 dark:text-green-400'
                             : 'bg-yellow-100 text-yellow-800 dark:bg-yellow-900/20 dark:text-yellow-400'
                     }`}>
                         {page.is_published ? 'Published' : 'Draft'}
                     </span>
                 </div>
 
-                {/* Content preview */}
+
                 <div className="mb-4">
                     <p className="text-sm text-gray-600 dark:text-gray-300 line-clamp-3">
                         {page.content?.sections?.[0]?.content || 'No content yet...'}
                     </p>
                 </div>
 
-                {/* Stats */}
+
                 <div className="flex items-center justify-between text-xs text-gray-500 dark:text-gray-400 mb-4">
                     <span>v{page.version}</span>
                     <span>
@@ -72,7 +71,6 @@ const PageCard = ({ page, onUpdate, onDelete }) => {
                     </span>
                 </div>
 
-                {/* Actions */}
                 <div className="flex items-center justify-between space-x-2">
                     <div className="flex space-x-2">
                         <Link
@@ -81,7 +79,7 @@ const PageCard = ({ page, onUpdate, onDelete }) => {
                         >
                             Edit
                         </Link>
-                        
+
                         <Button
                             variant="ghost"
                             size="sm"

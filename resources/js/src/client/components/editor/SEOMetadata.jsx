@@ -1,4 +1,3 @@
-import React from 'react';
 import Input from '../../../Components/UI/Input';
 
 const SEOMetadata = ({ seo, onChange }) => {
