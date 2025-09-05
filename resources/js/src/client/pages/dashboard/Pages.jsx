@@ -1,14 +1,14 @@
-import React, { useState } from 'react';
-import MainLayout from '../dashboard/components/MainLayout';
 import PageList from '@/client/components/pages/PageList';
 import PageModal from '@/client/components/pages/PageModal';
 import { pageApi } from '@/services/pageApi';
-import Button from '@/components/UI/Button';
+import { useState } from 'react';
+import MainLayout from '../dashboard/components/MainLayout';
 
 const Pages = () => {
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [editingPage, setEditingPage] = useState(null);
     const [actionLoading, setActionLoading] = useState(false);
+
 
     const handleCreatePage = () => {
         setEditingPage(null);

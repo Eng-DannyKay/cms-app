@@ -1,13 +1,13 @@
-import React, { useState, useEffect } from "react";
-import MainLayout from "../dashboard/components/MainLayout";
-import MetricsCard from "../analytics/components/MetricsCard";
-import VisitorChart from "../analytics/components/VisitorChart";
-import GeographyChart from "../analytics/components/GeographyChart";
-import DeviceChart from "../analytics/components/DeviceChart";
-import { analyticsApi } from "../../../services/analyticsApi";
+import { Clock, Download, TrendingDown, User, Users } from "lucide-react";
+import { useEffect, useState } from "react";
 import Button from "../../../Components/UI/Button";
 import LoadingSpinner from "../../../Components/UI/LoadingSpinner";
-import { Users, User, TrendingDown, Clock, Download } from "lucide-react";
+import { analyticsApi } from "../../../services/analyticsApi";
+import DeviceChart from "../analytics/components/DeviceChart";
+import GeographyChart from "../analytics/components/GeographyChart";
+import MetricsCard from "../analytics/components/MetricsCard";
+import VisitorChart from "../analytics/components/VisitorChart";
+import MainLayout from "../dashboard/components/MainLayout";
 
 const Analytics = () => {
     const [loading, setLoading] = useState(true);
