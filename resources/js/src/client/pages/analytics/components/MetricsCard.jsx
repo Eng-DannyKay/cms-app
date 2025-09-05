@@ -1,10 +1,10 @@
 import React from 'react';
-import { ArrowUpIcon, ArrowDownIcon } from '@heroicons/react/24/outline';
+import { ArrowUp, ArrowDown } from 'lucide-react';
 
 const MetricsCard = ({ title, value, change, changeType, icon, loading = false }) => {
     const isPositive = changeType === 'increase';
     const changeColor = isPositive ? 'text-green-600' : 'text-red-600';
-    const ChangeIcon = isPositive ? ArrowUpIcon : ArrowDownIcon;
+    const ChangeIcon = isPositive ? ArrowUp : ArrowDown;
 
     if (loading) {
         return (
@@ -29,7 +29,7 @@ const MetricsCard = ({ title, value, change, changeType, icon, loading = false }
                         {typeof value === 'number' ? value.toLocaleString() : value}
                     </p>
                     <div className={`flex items-center mt-2 ${changeColor}`}>
-                        <ChangeIcon className="w-4 h-4 mr-1" />
+                        <ChangeIcon size={16} className="mr-1" />
                         <span className="text-sm font-medium">
                             {change}% {isPositive ? 'increase' : 'decrease'}
                         </span>

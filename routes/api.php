@@ -39,24 +39,26 @@ Route::middleware('auth:sanctum')->group(function () {
             'update' => 'api.pages.update',
             'destroy' => 'api.pages.destroy',
         ]);
-        
+
     // Additional page routes
     Route::prefix('pages')->group(function () {
         Route::post('{page}/publish', [PageController::class, 'publish'])->name('api.pages.publish');
         Route::post('{page}/duplicate', [PageController::class, 'duplicate'])->name('api.pages.duplicate');
         Route::get('{page}/preview', [PageController::class, 'preview'])->name('api.pages.preview');
 
-        
-        // Analytics
+
+    // Analytics
         Route::prefix('analytics')->group(function () {
+            Route::get('summary', [AnalyticsController::class, 'getClientAnalytics'])->name('analytics.summary');
+            Route::get('top-pages', [AnalyticsController::class, 'getTopPages'])->name('analytics.top-pages');
+
             Route::get('{page}', [AnalyticsController::class, 'getPageAnalytics'])->name('analytics.page');
             Route::get('{page}/timeline', [AnalyticsController::class, 'getVisitorTimeline'])->name('analytics.timeline');
             Route::get('{page}/geography', [AnalyticsController::class, 'getGeographicData'])->name('analytics.geography');
             Route::get('{page}/devices', [AnalyticsController::class, 'getDeviceAnalytics'])->name('analytics.devices');
             Route::get('{page}/export', [AnalyticsController::class, 'exportPageAnalytics'])->name('analytics.export');
-            Route::get('summary', [AnalyticsController::class, 'getClientAnalytics'])->name('analytics.summary');
-            Route::get('top-pages', [AnalyticsController::class, 'getTopPages'])->name('analytics.top-pages');
         });
+
     });
 
     // Themes

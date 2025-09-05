@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import MainLayout from '../dashboard/components/MainLayout';
 import MetricsCard from '../analytics/components/MetricsCard';
-import VisitorChart from '@/client/components/analytics/VisitorChart';
-import GeographyChart from '@/client/components/analytics/GeographyChart';
-import DeviceChart from '@/client/components/analytics/DeviceChart';
+import VisitorChart from '../analytics/components/VisitorChart';
+import GeographyChart from '../analytics/components/GeographyChart';
+import DeviceChart from '../analytics/components/DeviceChart';
 import { analyticsApi } from '../../../services/analyticsApi';
 import Button from '../../../Components/UI/Button';
 import LoadingSpinner from '../../../Components/UI/LoadingSpinner';
+import { Users, User, TrendingDown, Clock, Download } from 'lucide-react';
 
 const Analytics = () => {
     const [loading, setLoading] = useState(true);
@@ -30,7 +31,6 @@ const Analytics = () => {
             ]);
 
             setSummary(summaryResponse.data);
-            // Set chart data
         } catch (err) {
             setError(err.message);
             console.error('Failed to load analytics:', err);
@@ -52,7 +52,6 @@ const Analytics = () => {
     return (
         <MainLayout>
             <div className="space-y-6">
-                {/* Header */}
                 <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
                     <div>
                         <h1 className="text-2xl font-bold text-gray-900 dark:text-white">
@@ -75,6 +74,7 @@ const Analytics = () => {
                             <option value="90d">Last 90 days</option>
                         </select>
                         <Button variant="outline">
+                            <Download size={16} className="mr-2" />
                             Export Report
                         </Button>
                     </div>
@@ -92,28 +92,28 @@ const Analytics = () => {
                         value={summary?.total_views || 0}
                         change={12.5}
                         changeType="increase"
-                        icon="👥"
+                        icon={<Users size={20} className="text-blue-600" />}
                     />
                     <MetricsCard
                         title="Unique Visitors"
                         value={summary?.unique_visitors || 0}
                         change={8.3}
                         changeType="increase"
-                        icon="👤"
+                        icon={<User size={20} className="text-indigo-600" />}
                     />
                     <MetricsCard
                         title="Bounce Rate"
                         value={`${summary?.bounce_rate || 0}%`}
                         change={-4.2}
                         changeType="decrease"
-                        icon="📉"
+                        icon={<TrendingDown size={20} className="text-amber-600" />}
                     />
                     <MetricsCard
                         title="Avg. Session"
                         value={`${summary?.avg_session_duration || 0}m`}
                         change={15.7}
                         changeType="increase"
-                        icon="⏱️"
+                        icon={<Clock size={20} className="text-green-600" />}
                     />
                 </div>
 
