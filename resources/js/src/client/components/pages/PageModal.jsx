@@ -2,8 +2,8 @@ import React from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { pageSchema } from '@/shared/validations/page';
-import Button from '@/components/UI/Button';
-import Input from '@/components/UI/Input';
+import Button from '@/Components/UI/Button';
+import Input from '@/Components/UI/Input';
 
 const PageModal = ({ isOpen, onClose, onSubmit, initialData, loading }) => {
     const {

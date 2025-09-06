@@ -1,16 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import { pageApi } from '@/services/pageApi';
 import PageCard from './PageCard';
-import Button from '@/components/UI/Button';
-import LoadingSpinner from '@/components/UI/LoadingSpinner';
-import Input from '@/components/UI/Input';
+import Button from '@/Components/UI/Button';
+import LoadingSpinner from '@/Components/UI/LoadingSpinner';
+import Input from '@/Components/UI/Input';
 
 const PageList = ({ onEditPage, onCreatePage }) => {
     const [pages, setPages] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
     const [searchTerm, setSearchTerm] = useState('');
-    const [filter, setFilter] = useState('all'); 
+    const [filter, setFilter] = useState('all');
 
     useEffect(() => {
         loadPages();
@@ -20,11 +20,11 @@ const PageList = ({ onEditPage, onCreatePage }) => {
         try {
             setLoading(true);
             setError(null);
-            
+
             const params = {};
             if (searchTerm) params.search = searchTerm;
             if (filter !== 'all') params.published = filter === 'published';
-            
+
             const response = await pageApi.getPages(params);
             setPages(response.data || []);
         } catch (err) {
@@ -36,7 +36,7 @@ const PageList = ({ onEditPage, onCreatePage }) => {
     };
 
     const handlePageUpdate = (updatedPage) => {
-        setPages(prev => prev.map(page => 
+        setPages(prev => prev.map(page =>
             page.id === updatedPage.id ? updatedPage : page
         ));
     };
@@ -48,10 +48,10 @@ const PageList = ({ onEditPage, onCreatePage }) => {
     const filteredPages = pages.filter(page => {
         const matchesSearch = page.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
                             page.slug.toLowerCase().includes(searchTerm.toLowerCase());
-        const matchesFilter = filter === 'all' || 
+        const matchesFilter = filter === 'all' ||
                             (filter === 'published' && page.is_published) ||
                             (filter === 'draft' && !page.is_published);
-        
+
         return matchesSearch && matchesFilter;
     });
 
@@ -65,7 +65,7 @@ const PageList = ({ onEditPage, onCreatePage }) => {
 
     return (
         <div className="space-y-6">
-          
+
             <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
                 <div>
                     <h2 className="text-2xl font-bold text-gray-900 dark:text-white">
@@ -119,7 +119,7 @@ const PageList = ({ onEditPage, onCreatePage }) => {
                         No pages found
                     </h3>
                     <p className="text-gray-500 dark:text-gray-400">
-                        {searchTerm || filter !== 'all' 
+                        {searchTerm || filter !== 'all'
                             ? 'Try adjusting your search or filters'
                             : 'Get started by creating your first page'
                         }

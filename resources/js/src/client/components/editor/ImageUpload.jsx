@@ -1,5 +1,5 @@
-import Button from '@/components/UI/Button';
-import LoadingSpinner from '@/components/UI/LoadingSpinner';
+import Button from '@/Components/UI/Button';
+import LoadingSpinner from '@/Components/UI/LoadingSpinner';
 import { pageApi } from '@/services/pageApi';
 import { useRef, useState } from 'react';
 
