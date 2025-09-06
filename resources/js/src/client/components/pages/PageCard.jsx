@@ -1,4 +1,4 @@
-import Button from '@/components/UI/Button';
+import Button from '@/Components/UI/Button';
 import { pageApi } from '@/services/pageApi';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';

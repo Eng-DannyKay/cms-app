@@ -14,7 +14,7 @@ const Analytics = () => {
     const [error, setError] = useState(null);
     const [period, setPeriod] = useState("30d");
     const [summary, setSummary] = useState(null);
-    const [charts, setCharts] = useState({});
+    const [charts] = useState({});
 
     useEffect(() => {
         loadAnalyticsData();

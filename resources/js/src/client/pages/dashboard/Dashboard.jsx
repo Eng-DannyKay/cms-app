@@ -1,16 +1,15 @@
-import React, { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import MainLayout from "./components/MainLayout";
-import { clientApi } from "../../../services/clientApi";
 import LoadingSpinner from "../../../Components/UI/LoadingSpinner";
+import { clientApi } from "../../../services/clientApi";
+import MainLayout from "./components/MainLayout";
 
 import {
-  BarChart3,
-  Users,
-  FileText,
-  Star,
-  LayoutDashboard,
-  Palette,
+    BarChart3,
+    FileText,
+    Palette,
+    Star,
+    Users
 } from "lucide-react";
 
 const Dashboard = () => {
